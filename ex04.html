@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex04 — Diretório</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 30px auto; }
+        h1 { margin-bottom: 4px; }
+        .total { color: #888; margin-bottom: 20px; }
+        .usuario {
+            display: flex; gap: 14px; align-items: center;
+            padding: 12px; border-bottom: 1px solid #eee;
+        }
+        .avatar {
+            width: 56px; height: 56px; border-radius: 50%;
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; font-weight: bold;
+            flex-shrink: 0;
+        }
+        .nome { font-weight: bold; font-size: 18px; }
+        .email { color: #06f; font-size: 13px; }
+        .meta { color: #666; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <h1>Diretório</h1>
+    <div class="total" id="total">Carregando...</div>
+    <div id="lista"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        // Gera uma cor consistente a partir do nome (mesmo nome = mesma cor)
+        function corDoNome(nome) {
+            var hash = 0;
+            for (var i = 0; i < nome.length; i++) {
+                hash = nome.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            var matiz = Math.abs(hash) % 360;   // 0 a 359 graus na roda de cores
+            return 'hsl(' + matiz + ', 60%, 50%)';
+        }
+
+        // Pega as iniciais: primeira letra do primeiro e do último nome
+        function iniciais(nome) {
+            var partes = nome.trim().split(' ');
+            var primeira = partes[0].charAt(0);
+            var ultima = partes.length > 1 ? partes[partes.length - 1].charAt(0) : '';
+            return (primeira + ultima).toUpperCase();
+        }
+
+        // Busca os usuários na API
+        $.getJSON('https://jsonplaceholder.typicode.com/users')
+            .done(function (usuarios) {
+                // Atualiza o contador
+                $('#total').text(usuarios.length + ' usuários');
+
+                // Monta um bloco para cada usuário
+                $.each(usuarios, function (i, u) {
+                    var $usuario = $('<div>').addClass('usuario');
+
+                    // Avatar colorido com as iniciais
+                    var $avatar = $('<div>')
+                        .addClass('avatar')
+                        .css('background-color', corDoNome(u.name))
+                        .text(iniciais(u.name));
+
+                    // Coluna de informações
+                    var $info = $('<div>');
+                    $info.append($('<div>').addClass('nome').text(u.name));
+                    $info.append($('<div>').addClass('email').text(u.email));
+                    $info.append($('<div>').addClass('meta')
+                        .text(u.company.name + ' · ' + u.address.city));
+
+                    // Junta tudo e adiciona na lista
+                    $usuario.append($avatar).append($info);
+                    $('#lista').append($usuario);
+                });
+            })
+            .fail(function () {
+                $('#total').text('Erro ao carregar os usuários.');
+            });
+    </script>
+</body>
+</html>
