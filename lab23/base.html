@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head><meta charset="utf-8"><title>Matrículas</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 520px; margin: 40px auto; }
+  label { display:block; margin:8px 0; }
+  input[type=text], input[type=email] { width:100%; padding:6px; }
+  .erro { border:2px solid #c0392b; }
+  #aviso { display:none; padding:8px; border-radius:6px; background:#2ecc71; color:#fff; }
+  .barra button { margin:4px 4px 0 0; padding:6px 10px; }
+</style></head><body>
+  <h1>📋 Matrículas</h1>
+  <p>Registro <b id="pos">0</b> de <b id="total">0</b></p>
+  <p id="aviso"></p>
+  <form id="form">
+    <input type="hidden" id="id">
+    <label>Nome <input type="text" id="nome" autocomplete="off"></label>
+    <label>CPF <input type="text" id="cpf" autocomplete="off"></label>
+    <label>Curso <input type="text" id="curso" autocomplete="off"></label>
+    <label>E-mail <input type="email" id="email" autocomplete="off"></label>
+    <label><input type="checkbox" id="ativo"> Ativo</label>
+    <div class="barra">
+      <button type="button" id="anterior">⏮ Anterior</button>
+      <button type="button" id="proximo">Próximo ⏭</button>
+      <button type="button" id="novo">✚ Novo</button>
+      <button type="submit" id="salvar">💾 Salvar</button>
+      <button type="button" id="apagar" disabled>🗑 Apagar</button>
+    </div>
+  </form>
+  <script>
+    var API = 'https://curso.chr.eti.br/ajax/matricula05.php';  // ⚠️ troque o número!
+    var registros = [];
+    var pos = 0;
+    $(function () {
+      // ✏️ SEU CÓDIGO AQUI
+    });
+  </script>
+</body></html>

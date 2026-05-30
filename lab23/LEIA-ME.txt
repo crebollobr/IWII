@@ -1,0 +1,15 @@
+lab23 — Aula 3 (SPA + Create/Read)
+
+ARQUIVOS BASE (esqueletos prontos — você só programa o JavaScript):
+  base.html    -> o app de Matrículas (formulário-navegador)
+  agenda.html  -> o desafio (grade da semana)
+
+COMO USAR:
+1. Salve cópias com o nome de cada exercício (ex01-console.html, etc.).
+2. No topo do <script>, troque o número do seu arquivo no servidor:
+       var API = 'https://curso.chr.eti.br/ajax/matriculaNN.php';
+   (NN = o número que você escolheu, de 01 a 20).
+3. Escreva seu código no lugar marcado com  // ✏️ SEU CÓDIGO AQUI
+4. Suba para  https://curso.chr.eti.br/SEUNOME/lab23/
+
+O enunciado de cada exercício está no material da aula (20260619.md).

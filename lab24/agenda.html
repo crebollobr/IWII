@@ -1,0 +1,40 @@
+<!-- Esqueleto pronto do DESAFIO (agenda) — Aula 4. Grade montada por montarGrade().
+     Continua o desafio da Aula 3: agora EDITAR (PUT) e APAGAR (DELETE) células.
+     Guarde o id da tarefa na célula com .data('id', t.id) ao hidratar. -->
+<!DOCTYPE html><html lang="pt-br"><head><meta charset="utf-8"><title>Agenda</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+  table{border-collapse:collapse;font-family:system-ui} td,th{border:1px solid #ccc;width:90px;height:34px;text-align:center;font-size:13px}
+  th{background:#f4f4f4} td:hover{background:#eef;cursor:pointer}
+</style></head><body>
+  <h1>🗓️ Minha semana</h1>
+  <table id="grade"></table>
+  <script>
+    var API = 'https://curso.chr.eti.br/ajax/matricula05.php';  // ⚠️ troque o número!
+    var DIAS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+    var HORAS = [];
+    for (var h = 6; h <= 24; h++) HORAS.push((h % 24 < 10 ? '0' : '') + (h % 24) + ':00');
+
+    function montarGrade() {
+      var $g = $('#grade');
+      var $head = $('<tr>').append($('<th>').text('hora'));
+      $.each(DIAS, function (i, d) { $('<th>').text(d).appendTo($head); });
+      $g.append($head);
+      $.each(HORAS, function (i, hora) {
+        var $tr = $('<tr>').append($('<th>').text(hora));
+        $.each(DIAS, function (j, dia) {
+          $('<td>').attr('data-dia', dia).attr('data-hora', hora).appendTo($tr);
+        });
+        $g.append($tr);
+      });
+    }
+    function celula(dia, hora) {
+      return $('td[data-dia="' + dia + '"][data-hora="' + hora + '"]');
+    }
+
+    $(function () {
+      montarGrade();
+      // ✏️ SEU CÓDIGO AQUI
+    });
+  </script>
+</body></html>

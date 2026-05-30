@@ -1,0 +1,14 @@
+lab24 — Aula 4 (SPA + Update/Delete)
+
+ARQUIVOS BASE (esqueletos prontos — você só programa o JavaScript):
+  base.html    -> o app de Matrículas (continua o da Aula 3)
+  agenda.html  -> o desafio (grade da semana, agora editável)
+
+COMO USAR:
+1. Salve cópias com o nome de cada exercício (ex01-mostrar-id.html, etc.).
+2. No topo do <script>, use o MESMO número da Aula 3 (seus dados continuam lá):
+       var API = 'https://curso.chr.eti.br/ajax/matriculaNN.php';
+3. Escreva seu código no lugar marcado com  // ✏️ SEU CÓDIGO AQUI
+4. Suba para  https://curso.chr.eti.br/SEUNOME/lab24/
+
+O enunciado de cada exercício está no material da aula (20260626.md).
